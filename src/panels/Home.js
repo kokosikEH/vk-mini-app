@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect , useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { Panel, PanelHeader, Header, Button, Group, Cell, Div, Avatar } from '@vkontakte/vkui';
@@ -15,8 +15,30 @@ import {
 	ContentCard,
   } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
+import b from '../img/b.jpg';
 
-const Home = ({ id, go, fetchedUser }) => (
+
+const Home = ({ id, go, fetchedUser }) => {
+	const [data, getData] = useState([])
+	const URL = 'https://jsonplaceholder.typicode.com/posts';
+  
+	useEffect(() => {
+		fetchData()
+	}, [])
+  
+  
+	const fetchData = () => {
+		fetch(URL)
+			.then((res) =>
+				res.json())
+  
+			.then((response) => {
+				console.log(response);
+				getData(response);
+			})
+  
+	}
+return(
 	<Panel id={id}>
 		<PanelHeader>Тест</PanelHeader>
 		{fetchedUser &&
@@ -28,9 +50,9 @@ const Home = ({ id, go, fetchedUser }) => (
 		</Group>}
 
 		
-			<div className="Group">
+			<Group>
 			<Cell>
-			подключи криптокошелек, ебень
+			подключи криптокошелек
 			
 			</Cell>
 			<Button 
@@ -43,7 +65,7 @@ const Home = ({ id, go, fetchedUser }) => (
 			>
 				подключить криптокошелек
 			</Button>
-			</div>
+			</Group>
 		
 
 		<Group header={<Header mode="secondary"><h1>Мои NFT</h1></Header>}>
@@ -58,26 +80,18 @@ const Home = ({ id, go, fetchedUser }) => (
 				>
 					<div style={{ paddingBottom: '66%' }} />
 				</ContentCard>
-
-				<Card>
+				{data.map((item, i) => (
+				<ContentCard
+				src="https://images.unsplash.com/photo-1603928726698-a015a1015d0e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80"
+				
+				header={item.title}
+				caption={item.body}
+				maxHeight={200}			  
+				>
 					<div style={{ paddingBottom: '66%' }} />
-				</Card>
-
-				<Card>
-					<div style={{ paddingBottom: '66%' }} />
-				</Card>
-
-				<Card>
-					<div style={{ paddingBottom: '66%' }} />
-				</Card>
-
-				<Card>
-					<div style={{ paddingBottom: '66%' }} />
-				</Card>
-
-				<Card>
-					<div style={{ paddingBottom: '66%' }} />
-				</Card>
+				</ContentCard>
+				))}
+				
 			</CardScroll>
     	</Group>
 
@@ -104,36 +118,26 @@ const Home = ({ id, go, fetchedUser }) => (
 			<ContentCard
 				onClick={go} data-to="comm"
 				src="https://images.unsplash.com/photo-1603988492906-4fb0fb251cf8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
-				alt="Picture of brown and gray mountains under blue sky during daytime photo"
-				subtitle="unsplash"
-				header="brown and gray mountains under blue sky during daytime photo"
-				text="Mountain changji"
-				caption="Photo by Siyuan on Unsplash"
+				header="Имя коммьюнити"
+				text="Роль?"
+				caption="Автор"
 				maxHeight={150}
 				>
 					<div style={{ paddingBottom: '66%' }} />
 					
 				</ContentCard>
 
-				<Card>
+				{data.map((item, i) => (
+				<ContentCard
+				onClick={go} data-to="comm"
+				src={b}
+				header={item.title}
+				caption={item.body}
+				maxHeight={150}			  
+				>
 					<div style={{ paddingBottom: '66%' }} />
-				</Card>
-
-				<Card>
-					<div style={{ paddingBottom: '66%' }} />
-				</Card>
-
-				<Card>
-					<div style={{ paddingBottom: '66%' }} />
-				</Card>
-
-				<Card>
-					<div style={{ paddingBottom: '66%' }} />
-				</Card>
-
-				<Card>
-					<div style={{ paddingBottom: '66%' }} />
-				</Card>
+				</ContentCard>
+				))}
 			</CardScroll>
     	</Group>
 
@@ -146,7 +150,7 @@ const Home = ({ id, go, fetchedUser }) => (
 		</Group>
 	</Panel>
 );
-
+}
 Home.propTypes = {
 	id: PropTypes.string.isRequired,
 	go: PropTypes.func.isRequired,

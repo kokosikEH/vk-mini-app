@@ -21,14 +21,12 @@ import {
 import persik from '../img/persik.png';
 import './Persik.css';
 
-const CreateComm = props => {
-	
-	return(
+const AddPerson = props => { 
 	<Panel id={props.id}>
 		<PanelHeader
 			before={<PanelHeaderBack onClick={props.go} data-to="home"/>}
 		>
-			Создать коммьюнити
+			Пригласить пользователя
 			
 		</PanelHeader>
 		
@@ -36,35 +34,31 @@ const CreateComm = props => {
       	
         
 		<FormLayout>
-      <FormItem top="Создать коммьюнити" >
+      <FormItem top="Пригласить пользователя" >
         <Input
           
           type="text"
-          placeholder="Название коммьюнити"
+          placeholder="Введите ссылку на страницу пользователя ВК"
         
         />
 		
       </FormItem>
-	  <FormItem top="Загрузите фото коммьюнити">
-        <File before={<Icon24Camera role="presentation" />} size="m">
-          Открыть галерею
-        </File>
-      </FormItem>
+	
 	  <FormItem>
               <Button size="l" stretched onClick={props.go} data-to="comm">
-                Создать коммьюнити
+			  Пригласить пользователя
               </Button>
             </FormItem>
     </FormLayout>
     
-		на этой странице вы сможете создать коммьюнити
+		
 	</Panel>
 	
-);}
+}
 
-CreateComm.propTypes = {
+AddPerson.propTypes = {
 	id: PropTypes.string.isRequired,
 	go: PropTypes.func.isRequired,
 };
 
-export default CreateComm;
+export default AddPerson;

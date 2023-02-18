@@ -23,6 +23,7 @@ import CreateNFT from './panels/CreateNFT';
 import CreateContent from './panels/CreateContent';
 import Comm from './panels/Comm';
 import Content from './panels/Content';
+import AddPerson from './panels/AddPerson';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -56,6 +57,7 @@ const App = () => {
 								<CreateNFT id='create_nft' go={go} />
 								<Comm id='comm' go={go} />
 								<Content id='content' go={go} />
+								<AddPerson id='add_person' go={go} />
 							</View>
 						</SplitCol>
 					</SplitLayout>

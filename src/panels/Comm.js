@@ -148,9 +148,9 @@ const Comm = props => (
 				stretched size="l" 
 				mode="secondary" 
 				onClick={props.go} 
-				data-to="create"
+				data-to="add_person"
 			>
-				Пригласить человека
+				Пригласить пользователя
 			</Button>
 		</Group>
 		
