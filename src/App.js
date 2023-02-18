@@ -9,10 +9,20 @@ import {
 	Header,
 	Group,
 	SimpleCell,
+	FormLayout,
+	FormItem,
+	Input,
+	IconButton,
+
   } from '@vkontakte/vkui';
+
 import Home from './panels/Home';
 import Persik from './panels/Persik';
 import CreateComm from './panels/CreateComm';
+import CreateNFT from './panels/CreateNFT';
+import CreateContent from './panels/CreateContent';
+import Comm from './panels/Comm';
+import Content from './panels/Content';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -42,6 +52,10 @@ const App = () => {
 								<Home id='home' fetchedUser={fetchedUser} go={go} />
 								<Persik id='persik' go={go} />
 								<CreateComm id='create' go={go} />
+								<CreateContent id='ctrate_content' go={go} />
+								<CreateNFT id='create_nft' go={go} />
+								<Comm id='comm' go={go} />
+								<Content id='content' go={go} />
 							</View>
 						</SplitCol>
 					</SplitLayout>

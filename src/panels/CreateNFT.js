@@ -11,6 +11,7 @@ import {
 	IconButton,
 	File,
 	Button,
+	Checkbox,
 
 } from '@vkontakte/vkui';
 import {
@@ -21,12 +22,12 @@ import {
 import persik from '../img/persik.png';
 import './Persik.css';
 
-const CreateComm = props => (
+const CreateNFT = props => (
 	<Panel id={props.id}>
 		<PanelHeader
 			before={<PanelHeaderBack onClick={props.go} data-to="home"/>}
 		>
-			Создать коммьюнити
+			Создать NFT
 			
 		</PanelHeader>
 		
@@ -34,35 +35,51 @@ const CreateComm = props => (
       	
         
 		<FormLayout>
-      <FormItem top="📝 Пример с кликабельной иконкой" >
+		<FormItem top="📝 Название" >
         <Input
           
           type="text"
-          placeholder="Ну ведь брокколи это вкусно и полезно 😢"
-          defaultValue="Брокколи 🥦"
+          placeholder="Название NFT"
+          
         />
-		
       </FormItem>
-	  <FormItem top="Загрузите ваше фото">
+
+	  <FormItem top="📝 Описание" >
+        <Input
+          
+          type="text"
+          placeholder="Описание NFT"
+          
+        />
+      </FormItem>
+
+		
+     
+	  <FormItem top="Загрузите картинку">
         <File before={<Icon24Camera role="presentation" />} size="m">
           Открыть галерею
         </File>
       </FormItem>
+	  <FormItem top="Доступ к контенту" >
+				<Checkbox >Junior</Checkbox>
+				<Checkbox >Middle</Checkbox>
+				<Checkbox>Senior</Checkbox>
+      </FormItem>
 	  <FormItem>
               <Button size="l" stretched onClick={props.go} data-to="comm">
-                Зарегистрироваться
+                Создать NFT
               </Button>
             </FormItem>
+			
     </FormLayout>
     
-		на этой странице вы сможете создать коммьюнити
 	</Panel>
 	
 );
 
-CreateComm.propTypes = {
+CreateNFT.propTypes = {
 	id: PropTypes.string.isRequired,
 	go: PropTypes.func.isRequired,
 };
 
-export default CreateComm;
+export default CreateNFT;
